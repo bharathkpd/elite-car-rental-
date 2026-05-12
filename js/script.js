@@ -54,23 +54,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Smooth Scrolling for anchors
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                // Adjust scroll position for fixed header
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-                
-                // Update active state in mobile nav
-                if (this.classList.contains('nav-item')) {
-                    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-                    this.classList.add('active');
+            const href = this.getAttribute('href');
+            
+            // Only smooth scroll if it's a hash link and not just "#"
+            if (href && href.startsWith('#') && href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                    
+                    if (this.classList.contains('nav-item')) {
+                        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                        this.classList.add('active');
+                    }
                 }
             }
         });

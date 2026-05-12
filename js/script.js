@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultArea = document.getElementById('booking-result');
     const resultText = document.getElementById('result-text');
     const waBtn = document.getElementById('wa-redirect-btn');
+    let currentWaUrl = "";
 
     const carPrices = {
         'Mahindra Thar': 4500,
@@ -122,9 +123,20 @@ document.addEventListener('DOMContentLoaded', () => {
             resultArea.style.display = 'block';
 
             const message = `Elite Rentals Inquiry:\n\nVehicle: *${car}*\nPick-up: ${pickup}\nReturn: ${returnDate}\nTotal Estimated: ₹${total.toLocaleString()}\n\nPlease confirm availability.`;
-            waBtn.href = `https://wa.me/918919999178?text=${encodeURIComponent(message)}`;
+            currentWaUrl = `https://wa.me/918919999178?text=${encodeURIComponent(message)}`;
+            
+            if (waBtn) waBtn.href = currentWaUrl;
             
             resultArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
+
+    if (waBtn) {
+        waBtn.addEventListener('click', (e) => {
+            if (currentWaUrl) {
+                e.preventDefault();
+                window.open(currentWaUrl, '_blank');
+            }
         });
     }
 

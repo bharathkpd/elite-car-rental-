@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Elite | Ride & Rent</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav" id="navbar">
+        <a href="#home" class="logo">
+            <div class="logo-racing-icon">
+                <img src="https://tse1.mm.bing.net/th?q=BMW+M4+Front+View+Isolated+Clean&w=100&h=100&c=7&rs=1&p=0" alt="BMW" style="width: 45px; height: auto; object-fit: contain;">
+            </div>
+            <div class="logo-stack">
+                <span class="logo-main">ELITE</span>
+                <span class="logo-sub">CAR RENTALS</span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#fleet">Fleet</a>
+            <a href="#team">Team</a>
+            <a href="https://wa.me/918919999178" target="_blank" class="btn btn-black" style="padding: 0.6rem 1.2rem;">Book Now</a>
+        </div>
+        <button class="mobile-menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Side Mobile Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <div class="logo">
+                <div class="logo-racing-icon">
+                    <img src="https://tse1.mm.bing.net/th?q=BMW+M4+Front+View+Isolated+Clean&w=100&h=100&c=7&rs=1&p=0" alt="BMW" style="width: 40px; height: auto; object-fit: contain;">
+                </div>
+                <div class="logo-stack">
+                    <span class="logo-main" style="color:var(--accent-black)">ELITE</span>
+                    <span class="logo-sub" style="color:var(--accent-black)">CAR RENTALS</span>
+                </div>
+            </div>
+            <button class="close-drawer" id="close-drawer"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="drawer-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#fleet">Fleet</a>
+            <a href="#team">Team</a>
+            <a href="https://wa.me/918919999178" target="_blank" class="btn btn-yellow btn-block">Book on WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-content">
+            <a href="#home" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#fleet" class="nav-item">
+                <i class="fas fa-car"></i>
+                <span>Fleet</span>
+            </a>
+            <a href="#team" class="nav-item">
+                <i class="fas fa-user-circle"></i>
+                <span>Team</span>
+            </a>
+            <a href="https://wa.me/918919999178" target="_blank" class="nav-item" style="color: var(--accent-black);">
+                <i class="fab fa-whatsapp"></i>
+                <span>Book</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- App Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content fade-up">
+            <h1>Go anywhere.<br>Rent the best.</h1>
+            <p>Get a premium vehicle delivered directly to you. Transparent pricing, unlimited miles, and zero hassle.</p>
+            <a href="#fleet" class="btn btn-black">Explore Fleet</a>
+            <a href="https://wa.me/918919999178" class="btn btn-outline" style="margin-left: 10px;">Contact Support</a>
+        </div>
+
+        <form class="booking-form fade-up" id="booking-form">
+            <h3>Plan your ride</h3>
+            <div class="input-group">
+                <label>Select Vehicle Type</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-search"></i>
+                    <select id="car-select">
+                        <option value="" disabled selected>Where to?</option>
+                        <option value="Mahindra Thar">Mahindra Thar</option>
+                        <option value="Hyundai Creta">Hyundai Creta</option>
+                        <option value="Kia Sonet">Kia Sonet</option>
+                        <option value="Toyota Glanza">Toyota Glanza</option>
+                        <option value="Maruti Baleno">Maruti Baleno</option>
+                        <option value="Maruti Ertiga">Maruti Ertiga</option>
+                        <option value="BMW Series">BMW Series</option>
+                        <option value="Swift Dzire">Swift Dzire</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Pickup Date</label>
+                <div class="input-wrapper">
+                    <i class="far fa-calendar-alt"></i>
+                    <input type="date" id="pickup-date">
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Return Date</label>
+                <div class="input-wrapper">
+                    <i class="far fa-calendar-check"></i>
+                    <input type="date" id="return-date">
+                </div>
+            </div>
+            <button type="button" id="quick-book-btn" class="btn btn-black btn-block">Check Prices</button>
+            <div id="booking-result" style="display:none; margin-top: 1.5rem; padding: 1.5rem; background: var(--bg-secondary); border-radius: 12px; text-align: center;">
+                <p id="result-text" style="font-weight: 800; font-size: 1.2rem; margin-bottom: 1rem;"></p>
+                <a href="#" id="wa-redirect-btn" target="_blank" class="btn btn-yellow btn-block">Book on WhatsApp</a>
+            </div>
+        </form>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="section-header fade-up">
+            <h2 class="section-title">The Standard</h2>
+            <p class="section-subtitle">Why thousands choose Elite Car Rentals every month.</p>
+        </div>
+        <div class="features-grid fade-up">
+            <div class="feature-box">
+                <i class="fas fa-gem"></i>
+                <h4>Immaculate Detail</h4>
+                <p>Vehicles are deeply sanitized and mechanically perfected prior to every single acquisition.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-map-marked-alt"></i>
+                <h4>Boundless Mileage</h4>
+                <p>Drive without arbitrary restrictions or hidden geographic boundaries.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Fully Insured</h4>
+                <p>Every trip is backed by premium comprehensive insurance for maximum peace of mind.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="section bg-gray">
+        <div class="section-header fade-up">
+            <h2 class="section-title">Our Fleet</h2>
+            <p class="section-subtitle">Real cars, exact prices. Choose your ride.</p>
+        </div>
+
+        <div class="fleet-grid fade-up">
+            
+            <!-- Thar -->
+            <div class="car-card">
+                <div class="car-image">
+                    <div class="car-badge" style="background: var(--accent-yellow); color: black;">Top Pick</div>
+                    <img src="https://tse1.mm.bing.net/th?q=Mahindra+Thar+Car+Side+Profile+Red&w=600&h=400&c=7&rs=1&p=0" alt="Mahindra Thar">
+                </div>
+                <div class="car-details">
+                    <div class="car-header">
+                        <h3 class="car-title">Mahindra Thar</h3>
+                    </div>
+                    <div class="car-category">Off-Road SUV</div>
+                    
+                    <div class="pricing">
+                        <div class="price-box">
+                            <span class="price-label">24 Hours</span>
+                            <span class="price-val">₹4,500</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label">12 Hours</span>
+                            <span class="price-val">₹2,200</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-yellow btn-block book-car-btn" data-car="Mahindra Thar">Select Vehicle</button>
+                </div>
+            </div>
+
+            <!-- Creta -->
+            <div class="car-card">
+                <div class="car-image">
+                    <div class="car-badge">Available Now</div>
+                    <img src="https://tse1.mm.bing.net/th?q=Hyundai+Creta+2023+Car+White&w=600&h=400&c=7&rs=1&p=0" alt="Hyundai Creta">
+                </div>
+                <div class="car-details">
+                    <div class="car-header">
+                        <h3 class="car-title">Hyundai Creta</h3>
+                    </div>
+                    <div class="car-category">Premium SUV</div>
+                    
+                    <div class="pricing">
+                        <div class="price-box">
+                            <span class="price-label">24 Hours</span>
+                            <span class="price-val">₹3,000</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label">12 Hours</span>
+                            <span class="price-val">₹1,500</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-black btn-block book-car-btn" data-car="Hyundai Creta">Select Vehicle</button>
+                </div>
+            </div>
+
+            <!-- Sonet -->
+            <div class="car-card">
+                <div class="car-image">
+                    <div class="car-badge">Available Now</div>
+                    <img src="https://tse1.mm.bing.net/th?q=Kia+Sonet+Car+Red&w=600&h=400&c=7&rs=1&p=0" alt="Kia Sonet">
+                </div>
+                <div class="car-details">
+                    <div class="car-header">
+                        <h3 class="car-title">Kia Sonet</h3>
+                    </div>
+                    <div class="car-category">Compact SUV</div>
+                    
+                    <div class="pricing">
+                        <div class="price-box">
+                            <span class="price-label">24 Hours</span>
+                            <span class="price-val">₹3,000</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label">12 Hours</span>
+                            <span class="price-val">₹1,500</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-black btn-block book-car-btn" data-car="Kia Sonet">Select Vehicle</button>
+                </div>
+            </div>
+
+            <!-- Glanza -->
+            <div class="car-card">
+                <div class="car-image">
+                    <div class="car-badge">Available Now</div>
+                    <img src="https://tse1.mm.bing.net/th?q=Toyota+Glanza+Car+Blue&w=600&h=400&c=7&rs=1&p=0" alt="Toyota Glanza">
+                </div>
+                <div class="car-details">
+                    <div class="car-header">
+                        <h3 class="car-title">Toyota Glanza</h3>
+                    </div>
+                    <div class="car-category">Premium Hatchback</div>
+                    
+                    <div class="pricing">
+                        <div class="price-box">
+                            <span class="price-label">24 Hours</span>
+                            <span class="price-val">₹2,500</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label">12 Hours</span>
+                            <span class="price-val">₹1,200</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-black btn-block book-car-btn" data-car="Toyota Glanza">Select Vehicle</button>
+                </div>
+            </div>
+
+            <!-- Baleno -->
+            <div class="car-card">
+                <div class="car-image">
+                    <div class="car-badge">Available Now</div>
+                    <img src="https://tse1.mm.bing.net/th?q=Maruti+Suzuki+Baleno+Car+Silver&w=600&h=400&c=7&rs=1&p=0" alt="Maruti Baleno">
+                </div>
+                <div class="car-details">
+                    <div class="car-header">
+                        <h3 class="car-title">Maruti Baleno</h3>
+                    </div>
+                    <div class="car-category">Dynamic Hatchback</div>
+                    
+                    <div class="pricing">
+                        <div class="price-box">
+                            <span class="price-label">24 Hours</span>
+                            <span class="price-val">₹2,500</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label">12 Hours</span>
+                            <span class="price-val">₹1,200</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-black btn-block book-car-btn" data-car="Maruti Baleno">Select Vehicle</button>
+                </div>
+            </div>
+
+            <!-- Ertiga -->
+            <div class="car-card">
+                <div class="car-image">
+                    <div class="car-badge">Available Now</div>
+                    <img src="https://tse1.mm.bing.net/th?q=Maruti+Suzuki+Ertiga+Car+White&w=600&h=400&c=7&rs=1&p=0" alt="Maruti Ertiga">
+                </div>
+                <div class="car-details">
+                    <div class="car-header">
+                        <h3 class="car-title">Maruti Ertiga</h3>
+                    </div>
+                    <div class="car-category">MUV 7-Seater</div>
+                    
+                    <div class="pricing">
+                        <div class="price-box">
+                            <span class="price-label">24 Hours</span>
+                            <span class="price-val">₹3,500</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label">12 Hours</span>
+                            <span class="price-val">₹1,800</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-black btn-block book-car-btn" data-car="Maruti Ertiga">Select Vehicle</button>
+                </div>
+            </div>
+
+            <!-- BMW -->
+            <div class="car-card">
+                <div class="car-image">
+                    <div class="car-badge">Available Now</div>
+                    <img src="https://tse1.mm.bing.net/th?q=BMW+5+Series+Sedan+Black&w=600&h=400&c=7&rs=1&p=0" alt="BMW Series">
+                </div>
+                <div class="car-details">
+                    <div class="car-header">
+                        <h3 class="car-title">BMW Series</h3>
+                    </div>
+                    <div class="car-category">Ultimate Luxury</div>
+                    
+                    <div class="pricing">
+                        <div class="price-box">
+                            <span class="price-label">24 Hours</span>
+                            <span class="price-val">₹6,000</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label">12 Hours</span>
+                            <span class="price-val">₹4,000</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-yellow btn-block book-car-btn" data-car="BMW Series">Select Vehicle</button>
+                </div>
+            </div>
+
+            <!-- Dzire -->
+            <div class="car-card">
+                <div class="car-image">
+                    <div class="car-badge">Available Now</div>
+                    <img src="https://tse1.mm.bing.net/th?q=Maruti+Suzuki+Dzire+Car+Red&w=600&h=400&c=7&rs=1&p=0" alt="Swift Dzire">
+                </div>
+                <div class="car-details">
+                    <div class="car-header">
+                        <h3 class="car-title">Swift Dzire</h3>
+                    </div>
+                    <div class="car-category">Executive Sedan</div>
+                    
+                    <div class="pricing">
+                        <div class="price-box">
+                            <span class="price-label">24 Hours</span>
+                            <span class="price-val">₹2,200</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label">12 Hours</span>
+                            <span class="price-val">₹1,100</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-black btn-block book-car-btn" data-car="Swift Dzire">Select Vehicle</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Client Love (Testimonials) -->
+    <section class="section bg-gray">
+        <div class="section-header fade-up">
+            <h2 class="section-title">Client Love</h2>
+            <p class="section-subtitle">Real feedback from our premium members.</p>
+        </div>
+        <div class="testimonials-grid fade-up">
+            <div class="testi-card">
+                <i class="fas fa-quote-left"></i>
+                <p class="testi-text">The Mahindra Thar was in pristine condition. Best rental experience in Hyderabad!</p>
+                <div class="testi-user">
+                    <div class="user-avatar">K</div>
+                    <span class="user-name">Kiran Kumar</span>
+                </div>
+            </div>
+            <div class="testi-card">
+                <i class="fas fa-quote-left"></i>
+                <p class="testi-text">Instant booking via WhatsApp. No paperwork hassle. Highly recommended.</p>
+                <div class="testi-user">
+                    <div class="user-avatar">A</div>
+                    <span class="user-name">Arjun Reddy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Team Section -->
+    <section id="team" class="section">
+        <div class="section-header fade-up">
+            <h2 class="section-title">Support Team</h2>
+            <p class="section-subtitle">We are here to help you 24/7.</p>
+        </div>
+
+        <div class="team-grid fade-up">
+            
+            <div class="team-card">
+                <div class="team-avatar"><i class="fas fa-user-shield"></i></div>
+                <div class="team-info">
+                    <h3>Mr. CH Bhargav</h3>
+                    <p>Owner & Service Mgr</p>
+                    <a href="https://wa.me/918919999178" target="_blank" class="team-contact"><i class="fab fa-whatsapp"></i> 8919999178</a>
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
+                <div class="team-info">
+                    <h3>Mr. Sk Annas</h3>
+                    <p>Owner & Cash Mgmt</p>
+                    <a href="tel:7396379290" class="team-contact"><i class="fas fa-phone-alt"></i> 73963 79290</a>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar"><i class="fas fa-wrench"></i></div>
+                <div class="team-info">
+                    <h3>Mr. Sk Zahidh</h3>
+                    <p>Delivery & Wash</p>
+                    <a href="tel:8688172013" class="team-contact"><i class="fas fa-phone-alt"></i> 86881 72013</a>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar"><i class="fas fa-user"></i></div>
+                <div class="team-info">
+                    <h3>Mr. Sk Mudssir</h3>
+                    <p>Support Member</p>
+                    <a href="tel:9177418867" class="team-contact"><i class="fas fa-phone-alt"></i> 91774 18867</a>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar"><i class="fas fa-user"></i></div>
+                <div class="team-info">
+                    <h3>Mr. Sk Muzamil</h3>
+                    <p>Support Member</p>
+                    <a href="tel:9908080064" class="team-contact"><i class="fas fa-phone-alt"></i> 99080 80064</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="section-header fade-up">
+            <h2 class="section-title">Common Questions</h2>
+            <p class="section-subtitle">Everything you need to know about renting with Elite.</p>
+        </div>
+        <div class="faq-container fade-up" style="max-width: 800px; margin: 0 auto; padding: 0 5%;">
+            <div class="faq-item" style="margin-bottom: 1.5rem; background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                <div class="faq-question" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-black); margin-bottom: 0.5rem;">What documents are required for rental?</div>
+                <div class="faq-answer" style="color: var(--text-main); line-height: 1.6;">You need a valid Original Driving License, Aadhar Card, and a security deposit. International guests require a Passport and International Driving Permit.</div>
+            </div>
+            <div class="faq-item" style="margin-bottom: 1.5rem; background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                <div class="faq-question" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-black); margin-bottom: 0.5rem;">Is there a security deposit?</div>
+                <div class="faq-answer" style="color: var(--text-main); line-height: 1.6;">Yes, a refundable security deposit is required for all vehicles. The amount varies based on the vehicle category (Luxury/Standard).</div>
+            </div>
+            <div class="faq-item" style="margin-bottom: 1.5rem; background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                <div class="faq-question" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-black); margin-bottom: 0.5rem;">Are there any mileage limits?</div>
+                <div class="faq-answer" style="color: var(--text-main); line-height: 1.6;">We offer Unlimited Miles for most local rentals. For outstation trips, please confirm with our support team on WhatsApp.</div>
+            </div>
+            <div class="faq-item" style="margin-bottom: 1.5rem; background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                <div class="faq-question" style="font-weight: 800; font-size: 1.1rem; color: var(--accent-black); margin-bottom: 0.5rem;">Do you provide home delivery?</div>
+                <div class="faq-answer" style="color: var(--text-main); line-height: 1.6;">Yes, we provide doorstep delivery and pickup across Hyderabad. Charges may apply based on the distance from our hub.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid fade-up">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-racing-icon">
+                            <img src="https://tse1.mm.bing.net/th?q=BMW+M4+Front+View+Isolated+Clean&w=100&h=100&c=7&rs=1&p=0" alt="BMW" style="width: 40px; height: auto; object-fit: contain;">
+                        </div>
+                        <div class="logo-stack">
+                            <span class="logo-main" style="color:white">ELITE</span>
+                            <span class="logo-sub" style="color:#999">CAR RENTALS</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="footer-text">The fastest, most reliable way to rent a vehicle. Transparent pricing, top-tier vehicles, and dedicated support.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">About Us</a></li>
+                    <li><a href="#fleet">Our Fleet</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="https://wa.me/918919999178">Help Center</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #333; text-align: center; color: #666; font-size: 0.9rem; font-weight: 700;">
+            Elite Car Rentals @2026
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp (Mobile only fallback) -->
+    <a href="https://wa.me/918919999178" target="_blank" class="floating-wa">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>
